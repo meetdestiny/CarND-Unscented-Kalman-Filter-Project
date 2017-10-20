@@ -68,6 +68,16 @@ public:
   double lambda_;
 
 
+  ///* the current NIS for radar
+  double NIS_radar_;
+
+  ///* the current NIS for laser
+double NIS_laser_;
+
+  MatrixXd R_radar_ ;
+
+  MatrixXd R_lidar_ ;
+
   /**
    * Constructor
    */
@@ -102,6 +112,10 @@ public:
    * @param meas_package The measurement at k+1
    */
   void UpdateRadar(MeasurementPackage meas_package);
+
+  //Some extra helper functions
+  void UpdateUKF(MeasurementPackage meas_package, MatrixXd Zsig, int n_z);
+  void normalizeAngle(double *angle);
 };
 
 #endif /* UKF_H */
